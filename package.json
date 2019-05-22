@@ -1,0 +1,27 @@
+{
+  "name": "geoip-server",
+  "version": "1.0.0",
+  "description": "Simple HTTP server that does GeoIP lookups",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trgwii/GeoIP-server.git"
+  },
+  "keywords": [
+    "geoip",
+    "http",
+    "server"
+  ],
+  "author": "Thomas Rory Gummerson <thomas@gummerson.no> (https://trgwii.no/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trgwii/GeoIP-server/issues"
+  },
+  "homepage": "https://github.com/trgwii/GeoIP-server#readme",
+  "dependencies": {
+    "geoip-lite": "^1.3.7"
+  }
+}
