@@ -26,11 +26,12 @@ const server = createServer((req, res) => {
 	const location = lookup(ip);
 	const ok = Boolean(location);
 	res.setHeader('Content-Type', 'application/json');
+	res.setHeader('Access-Control-Allow-Origin', '*');
 	return res.end(stringify(location
 		? { ok, ip, ...location }
 		: (
 			res.writeHead(500),
-			{ ok, ip, error: 'No results!', headers: req.headers })));
+			{ ok, ip, error: 'No results' })));
 });
 
 server.listen(process.env.PORT);
