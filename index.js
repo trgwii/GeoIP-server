@@ -25,6 +25,7 @@ const server = createServer((req, res) => {
 	const ip = getIP(req);
 	const location = lookup(ip);
 	const ok = Boolean(location);
+	res.setHeader('Content-Type', 'application/json');
 	return res.end(stringify(location
 		? { ok, ip, ...location }
 		: (
