@@ -12,10 +12,10 @@ const getIP = req => {
 	const param = req.url.slice(1);
 	const remote = req.connection.remoteAddress;
 	return (
-		isIP(proxied)
-			? proxied :
 		isIP(param)
 			? param :
+		isIP(proxied)
+			? proxied :
 		remote.startsWith('::ffff:')
 			? remote.split(':').pop() :
 		remote);
