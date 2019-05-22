@@ -8,8 +8,8 @@ const { lookup } = require('geoip-lite');
 const { stringify } = JSON;
 
 const getIP = req => {
-	const proxied = req.headers['x-forwarded-for'].split(',')[0].trim();
 	const param = req.url.slice(1);
+	const proxied = req.headers['x-forwarded-for'].split(',')[0].trim();
 	const remote = req.connection.remoteAddress;
 	return (
 		isIP(param)
