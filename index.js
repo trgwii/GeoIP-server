@@ -41,7 +41,7 @@ const server = createServer((req, res) => {
 	const ok = Boolean(location);
 	res.setHeader('Content-Type', 'application/json');
 	res.setHeader('Access-Control-Allow-Origin', '*');
-	return res.end(stringify(location
+	return res.end(stringify(ok
 		? { ok, ip, ...location }
 		: (
 			res.writeHead(500),
