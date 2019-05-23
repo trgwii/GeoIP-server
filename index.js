@@ -5,17 +5,9 @@ const { join } = require('path');
 const { createServer } = require('http');
 const { exec } = require('child_process');
 
-const { lookup, startWatchingDataUpdate } = require('geoip-lite');
+const { lookup } = require('geoip-lite');
 
 const { stringify } = JSON;
-
-startWatchingDataUpdate();
-
-setInterval(() =>
-	exec(
-		'npm run updatedb',
-		{ cwd: join(__dirname, 'node_modules', 'geoip-lite') }),
-1000 * 60 * 60 * 24);
 
 const getIP = req => {
 	const param = req.url.slice(1);
