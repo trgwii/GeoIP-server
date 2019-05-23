@@ -1,11 +1,25 @@
 'use strict';
 
 const { isIP } = require('net');
+const { join } = require('path');
 const { createServer } = require('http');
+const { execSync } = require('child_process');
 
-const { lookup } = require('geoip-lite');
+const { lookup, startWatchingDataUpdate } = require('geoip-lite');
 
 const { stringify } = JSON;
+
+startWatchingDataUpdate();
+
+execSync(
+	'npm run updatedb',
+	{ cwd: join(__dirname, 'node_modules', 'geoip-lite') });
+
+setInterval(() =>
+	execSync(
+		'npm run updatedb',
+		{ cwd: join(__dirname, 'node_modules', 'geoip-lite') }),
+1000 * 60 * 60 * 24);
 
 const getIP = req => {
 	const param = req.url.slice(1);
