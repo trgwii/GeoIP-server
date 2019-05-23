@@ -3,7 +3,7 @@
 const { isIP } = require('net');
 const { join } = require('path');
 const { createServer } = require('http');
-const { execSync } = require('child_process');
+const { exec } = require('child_process');
 
 const { lookup, startWatchingDataUpdate } = require('geoip-lite');
 
@@ -11,12 +11,8 @@ const { stringify } = JSON;
 
 startWatchingDataUpdate();
 
-execSync(
-	'npm run updatedb',
-	{ cwd: join(__dirname, 'node_modules', 'geoip-lite') });
-
 setInterval(() =>
-	execSync(
+	exec(
 		'npm run updatedb',
 		{ cwd: join(__dirname, 'node_modules', 'geoip-lite') }),
 1000 * 60 * 60 * 24);
