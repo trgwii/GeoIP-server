@@ -37,3 +37,5 @@ const server = createServer((req, res) => {
 });
 
 server.listen(process.env.PORT);
+
+module.exports = lookup;
